@@ -58,11 +58,12 @@ public class BodyFactory {
     }
 
     // Generate arrow body
-    public Body makeArrowBody(float possx, float possy, int material) {
+    public Body makeArrowBody(float possx, float possy, int material, float velox, float veloy) {
         // Definition params
         BodyDef arrowBodyDef = new BodyDef();
         arrowBodyDef.position.x = possx;
         arrowBodyDef.position.y = possy;
+        arrowBodyDef.linearVelocity.set(velox, veloy);
         // Definition sticky for arrows
         arrowBodyDef.type = BodyDef.BodyType.DynamicBody;
         arrowBodyDef.fixedRotation = false;
@@ -70,7 +71,7 @@ public class BodyFactory {
         // Create body to attach said definitions
         Body arrowBody = world.createBody(arrowBodyDef);
         PolygonShape polygonShape = new PolygonShape();
-        polygonShape.setAsBox(1,4);
+        polygonShape.setAsBox(3,1);
         arrowBody.createFixture(makeFixture(material, polygonShape));
 
         polygonShape.dispose();
