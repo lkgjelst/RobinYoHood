@@ -1,12 +1,10 @@
 package view;
 
 import com.badlogic.gdx.Screen;
+import com.progark.game.Controller;
 
-import controller.Controller;
+public class LoadingView implements Screen {
 
-public class LoadingView extends View {
-
-    // Sets controller as parent class
     private Controller parent;
 
     public LoadingView(Controller controller) {
@@ -20,7 +18,7 @@ public class LoadingView extends View {
 
     @Override
     public void render(float delta) {
-
+        parent.changeScreen(Controller.MENU);
     }
 
     @Override

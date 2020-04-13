@@ -1,10 +1,9 @@
 package view;
 
 import com.badlogic.gdx.Screen;
+import com.progark.game.Controller;
 
-import controller.Controller;
-
-public class GameOverView extends View {
+public class GameOverView implements Screen {
 
     private Controller parent;
 
