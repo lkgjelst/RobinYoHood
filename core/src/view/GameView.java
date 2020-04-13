@@ -9,6 +9,9 @@ public class GameView implements Screen {
 
     public GameView(Controller controller) {
         parent = controller;
+
+        // Model
+
     }
 
     @Override
