@@ -1,5 +1,7 @@
 package model;
 
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -14,14 +16,17 @@ public class BodyModel {
     public World world;
     private Box2DDebugRenderer debugRenderer;
     private OrthographicCamera orthographicCamera;
+    private InputController inputController;
 
     // Bodies
     private Body testPlayer;
     private Body ground;
 
-    public BodyModel() {
+    public BodyModel(InputController inputController) {
+        this.inputController = inputController;
         world = new World(new Vector2(0,-10f), true);
-        //TODO: CONTACT LISTENER
+        // Contact listener must be used by world
+        world.setContactListener(new BodyContactListener(this));
 
         createGround();
         createTestPlayer();
@@ -33,7 +38,15 @@ public class BodyModel {
         bodyFactory.makeArrowBody(0,0,1, 2f, 3f);
     }
 
+
     public void logicStep(float delta) {
+
+        // TODO: When player object is made this needs to be changed from testPlayer
+        if(inputController.left) {
+            testPlayer.applyForceToCenter(-10, 0, true);
+        } else if (inputController.right){
+            testPlayer.applyForceToCenter(10, 0, true);
+        }
         // Worlds tep tells world to move forwards in time
         world.step(delta, 3, 3);
     }
