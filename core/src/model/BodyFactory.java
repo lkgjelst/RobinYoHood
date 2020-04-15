@@ -37,12 +37,12 @@ public class BodyFactory {
         switch (material) {
             case 0:
                 fixtureDef.density = 1f;
-                fixtureDef.friction = 0.3f;
+                fixtureDef.friction = 0.7f;
                 fixtureDef.restitution = 0.1f;
                 break;
             case 1:
                 fixtureDef.density = 0.5f;
-                fixtureDef.friction = 0.7f;
+                fixtureDef.friction = 0.9f;
                 fixtureDef.restitution = 0.3f;
                 break;
             case 2:

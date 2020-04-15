@@ -64,7 +64,7 @@ public class BodyModel {
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(1, 3);
 
-        // Properties of body - fixturedef er typ data for den 'physical' body
+        // Properties of body - fixturedef er typ data for 'physical' body
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.density = 1f;
